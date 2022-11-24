@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orders</title>
+<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+	<ul>
+	  <li><a th:href="@{/getallproducts}">All Products</a></li>
+	  <li><a th:href="@{/getaddproduct}">Add Products</a></li>
+	  <li><a th:href="@{/searchorder}">Orders</a></li>
+	  <li><a th:href="@{/getusers}">Users</a></li>
+	  <li style="float:right"><a th:href="@{/logout}">Logout</a></li>
+	</ul>
+	<h1>Sporty Shoes Orders</h1>
+	<br>
+	<div align="center">
+		<table>
+			<thead>
+				<tr>
+					<th>OrderId</th>
+					<th>OrderDate</th>
+					<th>Username</th>
+					<th>Name</th>
+					<th>Membership</th>
+					<th>House Address</th>
+					<th>City</th>
+					<th>State</th>
+					<th>Contact</th>
+					<th>OrderProductId</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="o : ${order}">
+					<td><span th:text="${o.id}"></span></td>
+					<td><span th:text="${o.date}"></span></td>
+					<td><span th:text="${o.username}"></span></td>
+					<td><span th:text="${o.name}"></span></td>
+					<td><span th:text="${o.category}"></span></td>
+					<td><span th:text="${o.address}"></span></td>
+					<td><span th:text="${o.city}"></span></td>
+					<td><span th:text="${o.state}"></span></td>
+					<td><span th:text="${o.contact}"></span></td>
+					<td><div align="center"><a class="actions" th:href="@{/getproductbyid(id=${o.product.id})}"><span th:text="${o.product.id}"></span></a>
+					</div></td>
+					<td><div align="center"><a class="actions" th:href="@{/deleteorder(id=${o.id})}">Delete Order</a>
+					</div></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div align="center"><h1 th:style="${message}? 'color:black':''" th:text="${message}"></h1></div>
+
+</body>
+</html>

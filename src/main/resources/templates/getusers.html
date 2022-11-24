@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Users</title>
+<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+	<ul>
+	  <li><a th:href="@{/getallproducts}">All Products</a></li>
+	  <li><a th:href="@{/getaddproduct}">Add Products</a></li>
+	  <li><a th:href="@{/searchorder}">Orders</a></li>
+	  <li><a th:href="@{/getusers}">Users</a></li>
+	  <li style="float:right"><a th:href="@{/logout}">Logout</a></li>
+	</ul>
+	<h1>Sporty Shoes Users</h1>
+	<br>
+	<form th:action="@{/showusers}">
+		<input type="text" placeholder="Search.." name="name" th:value="${value}">
+		<button type="submit">Search by Name</button>
+	</form>
+	<br>
+	<div align="center">
+		<table>
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Name</th>
+					<th>Email Id</th>
+					<th>Gender</th>
+					<th>Contact</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="u : ${user}">
+					<td><span th:text="${u.username}"></span></td>
+					<td><span th:text="${u.name}"></span></td>
+					<td><span th:text="${u.email}"></span></td>
+					<td><span th:text="${u.gender}"></span></td>
+					<td><span th:text="${u.contact}"></span></td>
+					<td><div align="center">
+							<a class="actions" th:href="@{/deleteuser(userid=${u.userid})}">Delete</a>
+						</div></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div align="center"><h1 th:style="${message}? 'color:black':''" th:text="${message}"></h1></div>
+
+</body>
+</html>

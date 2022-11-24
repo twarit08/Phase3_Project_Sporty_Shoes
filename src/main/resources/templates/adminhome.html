@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+<link rel="stylesheet" th:href="@{/style.css}">    
+</head>
+<body>
+	
+	<ul>
+	  <li><a th:href="@{/getallproducts}" target="_blank">All Products</a></li>
+	  <li><a th:href="@{/getaddproduct}" target="_blank">Add Products</a></li>
+	  <li><a th:href="@{/searchorder}" target="_blank">Orders</a></li>
+	  <li><a th:href="@{/getusers}" target="_blank">Users</a></li>
+	  <li style="float:right"><a th:href="@{/logout}">Logout</a></li>
+	</ul>
+	<br><br><br><br><br><br>
+	<div>
+	<h2>Welcome Administrator </h2><br><br><br><br><br><br><br>
+	<h1>Sporty Shoes</h1>
+	<h3 align="center">India's most loved Sports Shoe store.</h3>
+	</div>
+	
+	
+	<footer><p>© 2021-2022 - Sporty Shoes Company. All Rights Reserved. The product names are the trademarks of their respective owners.</p></footer>
+
+</body>
+</html>

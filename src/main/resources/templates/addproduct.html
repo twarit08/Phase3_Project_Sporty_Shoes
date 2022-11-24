@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+<link rel="stylesheet" th:href="@{/style.css}">    
+</head>
+<body>
+	<ul>
+	  <li><a th:href="@{/getallproducts}">All Products</a></li>
+	  <li><a th:href="@{/getaddproduct}">Add Products</a></li>
+	  <li><a th:href="@{/searchorder}">Orders</a></li>
+	  <li><a th:href="@{/getusers}">Users</a></li>
+	  <li style="float:right"><a th:href="@{/logout}">Logout</a></li>
+	</ul>
+    <h1>Sporty Shoes</h1>
+    <br>
+    <form th:action="@{/addnewproduct}" method="post" th:object="${product}">
+        <div class="headingsContainer">
+            <h3>Add/Update Product</h3>
+            <p>Kindly enter the product details</p>
+        </div>
+
+        <div class="form-group">
+            <label for="id">Product Id</label>
+            <input type="number" placeholder="Enter Product Id" class="form-control" name="id" th:value="${product.id}" th:classappend="${#fields.hasErrors('id')}?'is-invalid':''" >
+            <div th:each="e : ${#fields.errors('id')}" th:style="${e}? 'color:red':'color:white'" th:text="${e}" class="invalid-feedback"></div>
+            
+            <br><br>
+
+            <label for="pname">Product Name</label>
+            <input type="text" placeholder="Enter Product Name" class="form-control" name="name" th:value="${product.name}" th:classappend="${#fields.hasErrors('name')}?'is-invalid':''">
+			<div th:each="e : ${#fields.errors('name')}" th:style="${e}? 'color:red':'color:white'" th:text="${e}" class="invalid-feedback"></div>
+			
+			 <br><br>
+
+            <label for="brand">Brand</label>
+            <input type="text" placeholder="Enter Brand Name" class="form-control" name="brand" th:value="${product.brand}" th:classappend="${#fields.hasErrors('brand')}?'is-invalid':''">
+			<div th:each="e : ${#fields.errors('brand')}" th:style="${e}? 'color:red':'color:white'" th:text="${e}" class="invalid-feedback"></div>
+			
+			 <br><br>
+
+            <label for="psize">Size</label><br>
+            <select name="size" id="size">
+            	<option value="size" disabled>Size</option>
+            	<option value="6 UK">6 UK</option>
+            	<option value="7 UK">7 UK</option>
+            	<option value="8 UK">8 UK</option>
+            	<option value="9 UK">9 UK</option>
+            	<option value="10 UK">10 UK</option>
+            	<option value="11 UK">11 UK</option>
+            	<option value="12 UK">12 UK</option>
+            </select>
+            
+            <br><br>
+            
+            <label for="ptype">Type</label><br>
+            <select name="type" id="type">
+            	<option value="type" disabled>Type</option>
+            	<option value="Running">Running</option>
+            	<option value="Gym/Training">Gym/Training</option>
+            	<option value="Trekking/Hiking">Trekking/Hiking</option>
+            	<option value="Cricket">Cricket</option>
+            	<option value="Football">Football</option>
+            	<option value="Outdoor">Outdoor</option>
+            	<option value="Sneakers">Sneakers</option>
+            </select>
+            
+            <br><br>
+            
+            <label for="gender">Gender Type</label><br>
+            <select name="gender" id="gender">
+            	<option value="gender" disabled>Gender</option>
+            	<option value="Male">Male</option>
+            	<option value="Female">Female</option>
+            	<option value="Unisex">Unisex</option>
+            </select>	
+            
+            <br><br>
+            
+            <label for="price">Price</label>
+            <input type="text" placeholder="Enter Price" class="form-control" name="price" th:value="${product.price}" th:classappend="${#fields.hasErrors('price')}?'is-invalid':''">
+			<div th:each="e : ${#fields.errors('price')}" th:style="${e}? 'color:red':'color:white'" th:text="${e}" class="invalid-feedback"></div>
+            <br><br>
+			<div align="center"><h3 th:style="${message}? 'color:#ff9900':''" th:text="${message}"></h3></div>
+
+            <button type="submit">Add/Update Product</button>
+            
+        </div>
+    </form>
+    
+</body>
+</html>

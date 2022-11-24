@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login page</title>
+<link rel="stylesheet" th:href="@{/style.css}">    
+</head>
+<body>
+	<ul>
+	  <li><a th:href="@{/sportyshoeshome}">Home</a></li>
+	  <li><a th:href="@{/selectproduct}">Order</a></li>
+	  <li><a th:href="@{/register}">Register</a></li>
+	  <li style="float: right"><a href="#about">About</a></li>
+	  <li style="float: right"><a href="#contact">Contact</a></li>
+	</ul>
+    <h1>Sporty Shoes Admin Login</h1>
+    <form th:action="@{/dashboard}" method="post" th:object="${adminLogin}">
+        <div class="headingsContainer">
+            <h3>Admin Login</h3>
+            <p>Log in with your username and password</p>
+        </div>
+
+        <div class="form-group">
+            <label for="username">Your Username</label>
+            <input type="text" placeholder="Enter Username" class="form-control" name="username" th:value="${adminLogin.username}" th:classappend="${#fields.hasErrors('username')}?'is-invalid':''" >
+            <div th:each="e : ${#fields.errors('username')}" th:style="${e}? 'color:red':'color:white'" th:text="${e}" class="invalid-feedback"></div>
+            <br><br>
+
+            <label for="pswrd">Your Password</label>
+            <input type="password" placeholder="Enter Password" class="form-control" name="password" th:value="${adminLogin.password}" th:classappend="${#fields.hasErrors('password')}?'is-invalid':''">
+			<div th:each="e : ${#fields.errors('password')}" th:style="${e}? 'color:red':'color:white'" th:text="${e}" class="invalid-feedback"></div>
+			<div align="center"><h3 th:style="${invalid}? 'color:red':''" th:text="${invalid}"></h3></div>
+            <div class="subform-group">
+                <label>
+                  <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+                <p class="forgotpsd"> <a th:href="@{/updatepassword}">Change Password</a></p>
+            </div>
+
+            <button type="submit">Login</button>
+			
+
+        </div>
+        
+
+    </form>
+</body>
+</html>

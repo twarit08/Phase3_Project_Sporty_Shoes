@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products</title>
+<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+	<ul>
+	  <li><a th:href="@{/sportyshoeshome}">Home</a></li>
+	  <li><a th:href="@{/selectproduct}">Order</a></li>
+	  <li><a th:href="@{/register}">Register</a></li>
+	  <li><a href="#contact">Contact</a></li>
+	  <li><a href="#about">About</a></li>
+	  <li style="float:right"><a th:href="@{/adminlogin}">Admin Login</a></li>
+	</ul>
+	<h1>Sporty Shoes Products</h1>
+	<br>
+	<div align="center">
+		<table>
+			<thead>
+				<tr>
+					<th>ProductId</th>
+					<th>Name</th>
+					<th>Brand</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Gender</th>
+					<th>Price</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p : ${products}">
+					<td><span th:text="${p.id}"></span></td>
+					<td><span th:text="${p.name}"></span></td>
+					<td><span th:text="${p.brand}"></span></td>
+					<td><span th:text="${p.size}"></span></td>
+					<td><span th:text="${p.type}"></span></td>
+					<td><span th:text="${p.gender}"></span></td>
+					<td><span th:text="${p.price}"></span></td>
+					<td><div align="center"><a class="actions" th:href="@{/buynow(pid=${p.id})}">Buy</a>
+					</div></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div align="center"><h1 th:style="${message}? 'color:black':''" th:text="${message}"></h1></div>
+
+</body>
+</html>
